@@ -1,51 +1,3 @@
-//creo array imgs
-
-const imagesArray = [ 
-    'img/01.jpg',
-    'img/02.jpg',
-    'img/03.jpg',
-    'img/04.jpg',
-    'img/05.jpg',
-
-]; 
-
-let slideAttiva = 0;
-
-const itemsDom = document.querySelector('.items');
-for (let i = 0; i < imagesArray.length; i++){
-    itemsDom.innerHTML += ` <div class="item"> 
-                                <img src="${imagesArray[i]}"/>
-                            </div>`;
-}
-
-const itemList =  document.getElementsByClassName('item');
-
-
-itemList[slideAttiva].classList.add('show');
-
-
-//scooro avanti di una
-
-const next = document.querySelector('.next');
-
-next.addEventListener('click',
-    function (){
-        itemList[slideAttiva].classList.remove('show');
-        slideAttiva++;
-        itemList[slideAttiva].classList.add('show'); 
-    }
-)
-
-//scorro indietro di una
-const pre = document.querySelector('.pre');
-
-pre.addEventListener('click',
-    function (){
-        itemList[slideAttiva].classList.remove('show');
-        slideAttiva--;
-        itemList[slideAttiva].classList.add('show'); 
-    }
-)
 /*Consegna:
 Dato un array di oggetti letterali con:
  - url dell’immagine
@@ -99,3 +51,58 @@ const images = [
         description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam.'
     },
 ];
+
+const itemsDom = document.querySelector('.items');
+
+images.forEach( (image, index)  =>{
+    itemsDom.innerHTML += ` <div class="item"> 
+                                <img src="${image.url}"/> 
+                            </div>`;
+
+})
+
+
+let slideAttiva = 0;
+
+
+const itemList =  document.getElementsByClassName('item');
+
+
+itemList[slideAttiva].classList.add('show');
+
+
+//scooro avanti di una
+
+const next = document.querySelector('.next');
+
+next.addEventListener('click',
+    function (){
+        itemList[slideAttiva].classList.remove('show');
+         
+        if (slideAttiva == images.length - 1) {
+            slideAttiva = 0;
+        } else {
+            slideAttiva++;
+        }
+        itemList[slideAttiva].classList.add('show');
+    }
+)
+
+//scorro indietro di una
+const pre = document.querySelector('.pre');
+
+pre.addEventListener('click',
+    function (){
+
+        itemList[slideAttiva].classList.remove('show');
+        if 
+        (slideAttiva == 0){
+         slideAttiva = images.length - 1;     
+        } else {
+            slideAttiva--;
+        }
+        itemList[slideAttiva].classList.add('show');
+    }
+            
+)
+
