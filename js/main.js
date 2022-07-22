@@ -56,6 +56,8 @@ const itemsDom = document.querySelector('.items');
 
 images.forEach( (image, index)  =>{
     itemsDom.innerHTML += ` <div class="item"> 
+                                <h1 class="item-t">${image.title}</h1>
+                                <p class="item-d">${image.description}</p>
                                 <img src="${image.url}"/> 
                             </div>`;
 
